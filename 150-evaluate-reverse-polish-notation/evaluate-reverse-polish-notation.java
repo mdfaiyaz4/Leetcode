@@ -1,32 +1,34 @@
+
 class Solution {
-    public int evalRPN(String[] token) {
-        Deque<String> stack = new ArrayDeque<>() ;
-        int n = token.length;
-        for(int i=0;i<n;i++){
-            String s = token[i];
-            if(s .equals("+") || s.equals("-") || s .equals("*") || s.equals("/")){
-                
-                
-                int b = Integer.valueOf(stack.pop());
-                int a = Integer.valueOf(stack.pop());
-                if(s.equals ("+")){
-                    stack.push(Integer.toString(a+b));
+    public int evalRPN(String[] tokens) {
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        for (String s : tokens) {
+            switch (s) {
+                case "+" -> {
+                    int b = stack.pop();
+                    int a = stack.pop();
+                    stack.push(a + b);
                 }
-                else if(s .equals("-")){
-                    stack.push(Integer.toString(a-b));
+                case "-" -> {
+                    int b = stack.pop();
+                    int a = stack.pop();
+                    stack.push(a - b);
                 }
-                else if(s .equals("/")){
-                    stack.push(Integer.toString(a/b));
+                case "*" -> {
+                    int b = stack.pop();
+                    int a = stack.pop();
+                    stack.push(a * b);
                 }
-                else if(s.equals("*")){
-                    stack.push(Integer.toString(a*b));
+                case "/" -> {
+                    int b = stack.pop();
+                    int a = stack.pop();
+                    stack.push(a / b);
                 }
-                
-            }
-            else {
-                stack.push(s);
+                default -> stack.push(Integer.parseInt(s));
             }
         }
-        return Integer.valueOf(stack.pop());
+
+        return stack.pop();
     }
 }
