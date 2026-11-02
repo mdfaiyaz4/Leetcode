@@ -1,19 +1,26 @@
 class Solution {
     public void sortColors(int[] a) {
         int n = a.length;
-        int z = 0,o = 0, t= 0;
-        for(int i:a){
-            if(i == 0) z++;
-            else if(i == 1) o++;
-            else if(i == 2) t++;
-        } o +=z; t+=o;
-        for(int i=0;i<z;i++){
-            a[i] = 0;
+        int low = 0, mid = 0 , high = n-1;
+        if(n == 1){
+            return ;
         }
-        for(int i=z;i<o;i++){
-            a[i] = 1;
-        }for(int i=o;i<t;i++){
-            a[i] = 2;
+        while(mid <= high){
+            if(a[mid] == 0){
+                int t = a[mid];
+                a[mid] = a[low];
+                a[low] = t;
+                low++; mid++;
+            }
+            else if(a[mid] == 1){
+                mid++;
+            }
+            else if(a[mid] == 2){
+                int t = a[mid];
+                a[mid] = a[high];
+                a[high] = t;
+                high--;
+            }
         }
     }
 }
