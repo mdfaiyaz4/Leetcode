@@ -12,7 +12,7 @@ class Solution {
             }
             else 
             {
-                c[k++] = nums1[i++];
+                c[k++] = nums2[j++];
             }
             
         }
