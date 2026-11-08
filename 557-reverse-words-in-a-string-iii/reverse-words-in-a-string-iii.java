@@ -10,7 +10,7 @@ class Solution {
             for(int i = right - 1; i >= left ; i--){
                 sb.append(s.charAt(i));
             }
-            if(sb.length() > 0){
+            if(right < n){
                 sb.append(" ");
             }
                
