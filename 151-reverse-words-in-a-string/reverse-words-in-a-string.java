@@ -1,29 +1,33 @@
 class Solution {
     public String reverseWords(String s) {
-        s = s.trim();
-        int n = s.length();
-        StringBuilder sb= new StringBuilder(s);
-        StringBuilder ans = new StringBuilder("");
-        sb = sb.reverse();
-        
-        for(int i=0;i<n;i++){
-            if(sb.charAt(i) == ' '){
-                continue;
+        StringBuilder ans = new StringBuilder();
+        int i = s.length() - 1;
+
+        while (i >= 0) {
+
+            // Skip spaces
+            while (i >= 0 && s.charAt(i) == ' ') {
+                i--;
             }
-           StringBuilder word= new StringBuilder("");
-            while(i < n && sb.charAt(i) != ' '){
-                word.append(sb.charAt(i));
-                i++;
+
+            if (i < 0) break;
+
+            // Find the beginning of the word
+            int j = i;
+
+            while (i >= 0 && s.charAt(i) != ' ') {
+                i--;
             }
-            word = word.reverse();
-            
-            ans.append(" ").append(word);
-                
-            
+
+            // Add space between words
+            if (ans.length() > 0) {
+                ans.append(" ");
+            }
+
+            // Append the word
+            ans.append(s.substring(i + 1, j + 1));
         }
-        return ans.substring(1);
-    
+
+        return ans.toString();
     }
-    
-    
 }
