@@ -3,7 +3,8 @@ class Solution {
         s = s.trim();
         int n = s.length();
         StringBuilder sb= new StringBuilder(s);
-        sb = sb.reverse(); String ans = "";
+        StringBuilder ans = new StringBuilder("");
+        sb = sb.reverse();
         
         for(int i=0;i<n;i++){
             if(sb.charAt(i) == ' '){
@@ -16,7 +17,7 @@ class Solution {
             }
             word = word.reverse();
             
-            ans +=" "+ word;
+            ans.append(" ").append(word);
                 
             
         }
